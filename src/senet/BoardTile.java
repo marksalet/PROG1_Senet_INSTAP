@@ -11,7 +11,15 @@ public class BoardTile {
 		this.content = con;
 	}
 	
-	public void setColor() {
-		
+	public int getValue() {
+		return value;
+	}
+	
+	public void setColor(String content) {
+		this.content = content;
+	}
+	
+	public String getColor() {
+		return content;
 	}
 }

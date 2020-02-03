@@ -11,13 +11,10 @@ public class Board {
 			if ((i == 1) || (i == 3) || (i == 5) || (i == 7) || (i == 9)) {
 				BoardTile boardTile = new BoardTile(i, i, "o");
 				boardTiles.add(boardTile);
-			} else if ((i == 2) || (i == 4) || (i == 6) || (i == 8)) {
+			} else if ((i == 2) || (i == 4) || (i == 6) || (i == 8) || (i == 10)) {
 				BoardTile boardTile = new BoardTile(i, i, "x");
 				boardTiles.add(boardTile);
-			} else if (i == 11) {
-				BoardTile boardTile = new BoardTile(31 - i, i, "x");
-				boardTiles.add(boardTile);
-			} else if (i > 11 && i < 21) {
+			} else if (i > 10 && i < 21) {
 				BoardTile boardTile = new BoardTile(31 - i, i, ".");
 				boardTiles.add(boardTile);
 			} else {
@@ -31,19 +28,17 @@ public class Board {
 		int count = 0;
 		String field = "";
 		
-		this.initateTiles();
-		
 		field += "+------------+\n";
 		
 		for (BoardTile tile : boardTiles) {
 			if (count == 9) {
-				field += tile.content + " |\n";
+				field += tile.getColor() + " |\n";
 				count = 0;
 			} else if (count == 0) {
-				field +="| " + tile.content;
+				field +="| " + tile.getColor();
 				count++;
 			} else {
-				field += tile.content;
+				field += tile.getColor();
 				count++;
 			}	
 		};
@@ -51,5 +46,12 @@ public class Board {
 		field += "+------------+";
 		
 		return field;
+	}
+	
+	public void movePlayer(String color, int oldValue, int value) {
+		BoardTile oldTile = boardTiles.stream().filter(t -> t.getValue() == oldValue).findFirst().orElse(null);
+		oldTile.setColor(".");
+		BoardTile tile = boardTiles.stream().filter(t -> t.getValue() == value).findFirst().orElse(null);
+		tile.setColor(color);
 	}
 }
