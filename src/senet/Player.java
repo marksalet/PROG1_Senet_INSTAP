@@ -27,6 +27,10 @@ public class Player {
 		return name;
 	}
 	
+	public String getColor() {
+		return color;
+	}
+	
 	public int getFinishedPieces() {
 		return finishedPieces;
 	}
