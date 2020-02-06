@@ -67,7 +67,7 @@ public class Senet {
 		}
 	}
 	
-	public boolean newMove(Player player) {
+	public void newMove(Player player) {
 		try {
 			System.out.println(player.getName() + " (" + player.getColor() + "), press <ENTER> to throw the dice");
 			String enter = br.readLine();
@@ -85,17 +85,17 @@ public class Senet {
 				if ((newNumber == 1) || (newNumber == 4) || (newNumber == 6)) {
 					newMove(player);
 				} else {
-					return true;
+					if (getCurrentMove() == "pOne") {
+						setCurrentMove("pTwo");
+					} else if (getCurrentMove() == "pTwo") {
+						setCurrentMove("pOne");
+					}
 				}
-			} else {
-				return false;
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
 		}
-		return false;
 	}
 	
 	public boolean gameGoing() {

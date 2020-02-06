@@ -50,8 +50,12 @@ public class Board {
 	
 	public void movePlayer(String color, int oldValue, int value) {
 		BoardTile oldTile = boardTiles.stream().filter(t -> t.getValue() == oldValue).findFirst().orElse(null);
-		oldTile.setColor(".");
+		String oldTileColor = oldTile.getColor();
+		
 		BoardTile tile = boardTiles.stream().filter(t -> t.getValue() == value).findFirst().orElse(null);
-		tile.setColor(color);
+		String tileColor = tile.getColor();
+		
+		oldTile.setColor(tileColor);
+		tile.setColor(oldTileColor);
 	}
 }
