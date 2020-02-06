@@ -74,9 +74,9 @@ public class Senet {
 			
 			if(enter != null) {
 				int newNumber = dice.getStickNumber();
-				System.out.println(player + " (" + player.getColor() + "), rolled a " + newNumber);
+				System.out.println(player.getName() + " (" + player.getColor() + "), rolled a " + newNumber);
 				
-				System.out.println(player + " (" + player.getColor() + "), which piece do you want to move?");
+				System.out.println(player.getName() + " (" + player.getColor() + "), which piece do you want to move?");
 				int move = Integer.parseInt(br.readLine());
 				
 				board.movePlayer(player.getColor(), move, move + newNumber);
