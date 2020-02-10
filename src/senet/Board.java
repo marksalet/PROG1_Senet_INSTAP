@@ -48,14 +48,16 @@ public class Board {
 		return field;
 	}
 	
-	public void movePlayer(String color, int oldValue, int value) {
-		BoardTile oldTile = boardTiles.stream().filter(t -> t.getValue() == oldValue).findFirst().orElse(null);
-		String oldTileColor = oldTile.getColor();
-		
-		BoardTile tile = boardTiles.stream().filter(t -> t.getValue() == value).findFirst().orElse(null);
-		String tileColor = tile.getColor();
-		
-		oldTile.setColor(tileColor);
-		tile.setColor(oldTileColor);
+	public boolean checkValueWithString(String input) {
+		for (BoardTile tile : boardTiles) {
+			if (tile.getValue() == Integer.parseInt(input)) {
+				return true;
+			}
+		} 
+		return false;
+	}
+	
+	public List<BoardTile> getBoardTiles() {
+		return boardTiles;
 	}
 }

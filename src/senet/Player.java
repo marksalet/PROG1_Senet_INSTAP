@@ -31,6 +31,16 @@ public class Player {
 		return color;
 	}
 	
+	public String getOppositeColor() {
+		if (color == "x") {
+			return "o";
+		} else if (color == "o") {
+			return "x";
+		} else {
+			return "Error";
+		}
+	}
+	
 	public int getFinishedPieces() {
 		return finishedPieces;
 	}
